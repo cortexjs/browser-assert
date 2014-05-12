@@ -28,6 +28,9 @@
     "dependencies": {
       "util": "~1.0.0",
       "json": "~1.0.1"
+    },
+    "devDependencies": {
+      "assert": "~1.0.0"
     }
   }
 }
