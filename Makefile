@@ -1,4 +1,4 @@
 test:
-	node test/simple/test-assert.js
+	@./node_modules/.bin/mocha test/test-assert.js
 
 .PHONY: test

@@ -26,6 +26,12 @@
 var util = require('util');
 var pSlice = Array.prototype.slice;
 
+var _JSON;
+if(typeof JSON !== 'object')
+    _JSON = require('json');
+else 
+    _JSON = JSON;
+
 // 1. The assert module provides functions that throw
 // AssertionError's when particular conditions are not met. The
 // assert module must conform to the following interface.
@@ -50,7 +56,10 @@ assert.AssertionError = function AssertionError(options) {
     this.generatedMessage = true;
   }
   var stackStartFunction = options.stackStartFunction || fail;
-  Error.captureStackTrace(this, stackStartFunction);
+  if(Error.captureStackTrace)
+    Error.captureStackTrace(this, stackStartFunction);
+  
+   this.toString = function () { return this.name + ': ' + this.message }
 };
 
 // assert.AssertionError instanceof Error
@@ -78,9 +87,9 @@ function truncate(s, n) {
 }
 
 function getMessage(self) {
-  return truncate(JSON.stringify(self.actual, replacer), 128) + ' ' +
+  return truncate(_JSON.stringify(self.actual, replacer), 128) + ' ' +
          self.operator + ' ' +
-         truncate(JSON.stringify(self.expected, replacer), 128);
+         truncate(_JSON.stringify(self.expected, replacer), 128);
 }
 
 // At present only the three keys mentioned above are used and

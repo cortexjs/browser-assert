@@ -1,6 +1,6 @@
 {
   "name": "assert",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A port of 'assert' for cortex from node.js, make your node code run in browsers.",
   "main": "index.js",
   "scripts": {
@@ -20,6 +20,9 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/cortexjs/browser-assert/issues"
+  },
+  "devDependencies": {
+    "mocha": "*"
   },
   "cortex": {
     "dependencies": {
